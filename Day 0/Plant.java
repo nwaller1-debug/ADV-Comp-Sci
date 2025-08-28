@@ -1,0 +1,60 @@
+public class Plant {
+
+    private int plants; // = 6;
+    private String PlantLocation; // = "in a pot";
+    private String PotExterior; // = "wool";
+    private String PotInside; // = "soil";
+    private String PlantDesc; // = "leaves on the plants";
+    private double PlantHeight; // = 12.5f;
+    private boolean isAlive; // = true;
+    private char Plantgrade; // = 'b';
+    private int Plantage;
+    
+    public Plant() {
+        plants = 6;
+        PlantLocation = "in a pot";
+        PotExterior = "wool";
+        PotInside = "soil";
+        PlantDesc = "leaves on plant";
+        PlantHeight = 12.5f;
+        isAlive = true;
+        Plantgrade = 'b';
+        Plantage = 1;
+    }
+
+    public void eat(){
+        Plantgrade = 'A';
+        System.out.println("the plant grade is now " + Plantgrade);
+        
+
+    }
+    
+    public void die(){
+        PlantDesc = "no leaves on plant";
+        System.out.println(PlantDesc);
+
+    }
+    
+    public void fall(){
+        PlantHeight = 0.0f;
+        System.out.println("the height of the plant is " + PlantHeight);
+
+    }
+    
+    public void drink(){
+        PotInside = "wet soil";
+        System.out.println("the soil is now wet");
+
+    }
+    
+    public void getolder(){
+        Plantage = 2;
+        System.out.println("the plant is now " + Plantage + "years old");
+
+    }
+
+    // eat
+    // die
+    // fall
+    // drink
+}
