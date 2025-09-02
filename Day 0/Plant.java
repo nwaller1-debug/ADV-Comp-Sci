@@ -48,9 +48,10 @@ public class Plant {
     }
     
     public void getolder(){
-        Plantage = 2;
+        Plantage = Plantage + 100;
         System.out.println("the plant is now " + Plantage + "years old");
-
+        if (Plantage > 100)
+            System.out.println("You're plant is very old");
     }
 
     // eat
