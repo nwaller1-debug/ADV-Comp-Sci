@@ -16,6 +16,7 @@ public class PlantTester {
         chomper.drink();
         chomper.getolder();
         chomper.eat();
+        chomper.setPlants(5);
         System.out.println(chomper.toString());
         p1plant.drink();
         p1plant.eat();

@@ -10,7 +10,7 @@ public class Plant {
     private char Plantgrade; // = 'b';
     private int Plantage;
     
-    public Plant(int Plantage){
+    public Plant(int Plantage) {
         plants = 6;
         PlantLocation = "in a pot";
         PotExterior = "wool";
@@ -19,6 +19,7 @@ public class Plant {
         PlantHeight = 12.5f;
         isAlive = true;
         Plantgrade = 'b';
+        this.Plantage = Plantage;
     }
 
     public Plant() {
@@ -32,6 +33,15 @@ public class Plant {
         Plantgrade = 'b';
         Plantage = 1;
     }
+
+    public int getPlants(){
+        return this.plants;
+    }
+
+    public void setPlants(int plants){
+        this.plants = plants;
+    }
+
 
     public void eat(){
         Plantgrade = 'A';
