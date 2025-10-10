@@ -4,21 +4,26 @@ public class Dog {
     private int age;
     private int dogId;
     private char dogChar;
-    private String dogtag;
+    private String dogTag;
     private boolean stillInFacility;
 
     public Dog(String name, String ownerName, int age, int dogId){
-        this.dogChar = generateDogChar(this.dogId);
+        dogChar = PawesomeUtils.generateDogChar(dogId);
+        dogTag = PawesomeUtils.generateDogTag(dogId, dogChar);
+        this.name = name;
+        this.ownerName = ownerName;
+        this.age = age;
+        this.dogId = dogId;
     }
 
     public Dog() {
         name = "Riley";
         ownerName = "Nick";
         age = 10;
-        dogId = 237;
-        this.dogChar = generateDogChar(this.dogId);
+        dogId = 123;
+        this.dogChar = PawesomeUtils.generateDogChar(this.dogId);
         stillInFacility = true;
-        dogtag = generateDogTage();
+        this.dogTag = PawesomeUtils.generateDogTag(dogId, dogChar);
     }
 
     public String getName() {
@@ -40,6 +45,10 @@ public class Dog {
     public int getAge() {
         return age;
     }
+    
+    public char getDogChar() {
+        return dogChar;
+    }
 
     public void setAge(int age) {
         this.age = age;
@@ -50,20 +59,21 @@ public class Dog {
     }
 
     public void setDogId(int dogId) {
-        this.dogId = dogId;
+        this.dogId = PawesomeUtils.validateDogId(dogId);
     }
 
 
     public void setDogChar(char dogChar) {
         this.dogChar = dogChar;
+        PawesomeUtils.generateDogChar(dogChar);
     }
 
     public String getDogtag() {
-        return dogtag;
+        return dogTag;
     }
 
     public void setDogtag(String dogtag) {
-        this.dogtag = dogtag;
+        this.dogTag = dogtag;
     }
 
     public boolean isStillInFacility() {
@@ -81,13 +91,13 @@ public class Dog {
         return name + "is " + ownerName + "'s dog. They are "  + age 
         + "years old. Their dog ID is " 
         + dogId + " their dogChar is " + dogChar 
-        + " and their dog tag is " + dogtag 
+        + " and their dog tag is " + dogTag 
         + " the dog is still in the facility"; } 
         else {
             return name + "is " + ownerName + "'s dog. They are "  
             + age + "years old. Their dog ID is " 
         + dogId + " their dogChar is " + dogChar 
-        + " and their dog tag is " + dogtag 
+        + " and their dog tag is " + dogTag 
         + " the dog is not in the facility ";
         }
         
@@ -100,38 +110,12 @@ public class Dog {
             && this.age == otherdog.age
             && this.dogId == otherdog.dogId
             && this.dogChar == otherdog.dogChar
-            && this.dogtag.equals(otherdog.dogtag)
+            && this.dogTag.equals(otherdog.dogTag)
             && this.stillInFacility == otherdog.stillInFacility
         ) {
             return true;
         } else {
             return false;
         }
-        
-    }
-
-    public static void checkIn(Dog dog, String personName) {
-        dog.ownerName = personName;
-        dog.stillInFacility = true;
-    }
-
-    public static String pickup(Dog dog, String personName) {
-        if (
-            dog.ownerName.equals(personName)
-        ) {
-            dog.stillInFacility = false;
-            return dog.name + " has been picked up by their owner " + dog.ownerName;
-        }
-        else {
-            return "You cannot take the dog because you are not its owner";
-        }
-    }
-
-    public static char generateDogChar(int dogId) {
-        return (char) ('f' + (dogId / 100) + ((dogId % 100) / 10) + ((dogId % 100) % 10));
-    }
-
-    public String generateDogTage() {
-        return dogChar + (char) dogId + " ";
     }
 }
