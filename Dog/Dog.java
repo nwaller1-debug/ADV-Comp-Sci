@@ -7,13 +7,14 @@ public class Dog {
     private String dogTag;
     private boolean stillInFacility;
 
-    public Dog(String name, String ownerName, int age, int dogId){
-        dogChar = PawesomeUtils.generateDogChar(dogId);
-        dogTag = PawesomeUtils.generateDogTag(dogId, dogChar);
+
+    public Dog(String name, String ownerName, int age, int dogId) {
+        this.dogId = PawesomeUtils.validateDogId(dogId);
+        this.dogChar = PawesomeUtils.generateDogChar(this.dogId);
+        this.dogTag = PawesomeUtils.generateDogTag(this.dogId, this.dogChar);
         this.name = name;
         this.ownerName = ownerName;
         this.age = age;
-        this.dogId = dogId;
     }
 
     public Dog() {
@@ -60,20 +61,22 @@ public class Dog {
 
     public void setDogId(int dogId) {
         this.dogId = PawesomeUtils.validateDogId(dogId);
+        this.dogChar = PawesomeUtils.generateDogChar(this.dogId);
+        this.dogTag = PawesomeUtils.generateDogTag(this.dogId, dogChar);
     }
 
 
     public void setDogChar(char dogChar) {
         this.dogChar = dogChar;
-        PawesomeUtils.generateDogChar(dogChar);
+        this.dogTag = PawesomeUtils.generateDogTag(this.dogId, this.dogChar);
     }
 
-    public String getDogtag() {
+    public String getDogTag() {
         return dogTag;
     }
 
-    public void setDogtag(String dogtag) {
-        this.dogTag = dogtag;
+    public void setDogTag(String dogTag) {
+        this.dogTag = dogTag; 
     }
 
     public boolean isStillInFacility() {
@@ -88,17 +91,17 @@ public class Dog {
         if (
             stillInFacility == true
         ) {
-        return name + "is " + ownerName + "'s dog. They are "  + age 
-        + "years old. Their dog ID is " 
-        + dogId + " their dogChar is " + dogChar 
-        + " and their dog tag is " + dogTag 
-        + " the dog is still in the facility"; } 
-        else {
+            return name + "is " + ownerName + "'s dog. They are "  + age 
+                + "years old. Their dog ID is " 
+                + dogId + " their dogChar is " + dogChar 
+                + " and their dog tag is " + dogTag 
+                + " the dog is still in the facility"; 
+        } else {
             return name + "is " + ownerName + "'s dog. They are "  
-            + age + "years old. Their dog ID is " 
-        + dogId + " their dogChar is " + dogChar 
-        + " and their dog tag is " + dogTag 
-        + " the dog is not in the facility ";
+                + age + "years old. Their dog ID is " 
+                + dogId + " their dogChar is " + dogChar 
+                + " and their dog tag is " + dogTag 
+                + " the dog is not in the facility ";
         }
         
     }
@@ -107,11 +110,11 @@ public class Dog {
         if (
             this.name.equals(otherdog.name) 
             && this.ownerName.equals(otherdog.ownerName)
-            && this.age == otherdog.age
-            && this.dogId == otherdog.dogId
-            && this.dogChar == otherdog.dogChar
-            && this.dogTag.equals(otherdog.dogTag)
-            && this.stillInFacility == otherdog.stillInFacility
+                && this.age == otherdog.age
+                && this.dogId == otherdog.dogId
+                && this.dogChar == otherdog.dogChar
+                && this.dogTag.equals(otherdog.dogTag)
+                && this.stillInFacility == otherdog.stillInFacility
         ) {
             return true;
         } else {

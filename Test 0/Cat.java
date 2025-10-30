@@ -13,7 +13,11 @@ public class Cat {
 		livesRemaining = 9;
 	}
 
-	public String getName() {
+	public Cat() {
+        //TODO Auto-generated constructor stub
+    }
+
+    public String getName() {
 		return name;
 	}
 
@@ -51,4 +55,24 @@ public class Cat {
 	public String toString() {
 		return name + " is of breed " + breed + " and has " + livesRemaining + " lives remaining.";
 	}
+
+    public int getMoodLevel() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getMoodLevel'");
+    }
+
+    public void setMoodLevel(int newMood) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setMoodLevel'");
+    }
+
+    public void setIsHungry(boolean b) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setIsHungry'");
+    }
+
+    public Object getCatId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCatId'");
+    }
 }

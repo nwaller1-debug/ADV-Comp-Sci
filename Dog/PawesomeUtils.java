@@ -6,7 +6,7 @@ public class PawesomeUtils {
     }
     
     public static char generateDogChar(int dogId) {
-        return (char) ('f' + (dogId / 100) + ((dogId % 100) / 10) + ((dogId % 100) % 10));
+        return (char) ('F' + (((dogId / 100) + ((dogId % 100) / 10) + ((dogId % 100) % 10)) % 10));
     }
     
     public static String pickup(Dog dog, String personName) {
@@ -15,13 +15,13 @@ public class PawesomeUtils {
         ) {
             dog.setStillInFacility(false);
             return dog.getName() + " has been picked up by their owner " + dog.getOwnerName();
-        }
-        else {
+        } else {
             return "You cannot take the dog because you are not its owner";
         }
     }
+    
     public static String generateDogTag(int dogid, char dogChar) {
-        return dogChar + "" + (dogid);
+        return dogid + "" + dogChar;
     }
 
     public static int validateDogId(int dogId) {
@@ -30,30 +30,47 @@ public class PawesomeUtils {
         ) {
             return dogId;
         } else {
-            return (int) ((Math.random() + 0.1) * 1000);
+            return (int) ((Math.random()) * 900) + 100;
         }
     }
     
     public static boolean validateDogTag(Dog dog) {
-        char newDogChar = generateDogChar(PawesomeUtils.validateDogId(dog.getDogId()));
-        int extraDogId = PawesomeUtils.validateDogId(dog.getDogId());
-        System.out.println(extraDogId);
-        System.out.println(newDogChar);
-        String newDogTag = PawesomeUtils.generateDogTag(extraDogId, newDogChar);
-        System.out.println(newDogTag);
+        int extraDogId = dog.getDogId();
+        char newDogChar = generateDogChar(extraDogId);
+        String newDogTag = "" + extraDogId + newDogChar;
         if (
-            newDogTag.equals(dog.getDogtag())
+            newDogTag.equals(dog.getDogTag())
         ) {
-            System.out.println(newDogTag);
-            System.out.println(dog.getDogtag());
-            System.out.println(dog.getDogId());
             return true;
         } else {
-            System.out.println(newDogTag);
-            System.out.println(dog.getDogId());
             return false;
         }
     }
+
+    public static int convertAgeToHumanAge(Dog dog) {
+        if (
+            dog.getAge() <= 2
+        ) {
+            return 15 + ((dog.getAge() - 1) * 9);
+        } else {
+            return 24 + ((dog.getAge() - 2) * 5);
+        }
+    }
+
+    public static int convertAgeToDogYears(int humanYears) {
+        if (
+            humanYears <= 15
+        ) {
+            return 1;
+        } else if (
+            humanYears > 15 & humanYears <= 24
+        ) {
+            return 2;
+        } else {
+            return (humanYears - 24) / 5 + 2;
+        }
+    }
+    
 
 
 }
