@@ -37,7 +37,7 @@ public class Pool {
         return username;
     }
     
-    public boolean needsChecmicalCheck() {
+    public boolean isNeedsChecmicalCheck() {
         return needsChecmicalCheck;
     }
     
@@ -71,18 +71,19 @@ public class Pool {
         }
         
         return "==ABOUT POOL ===" + "\n" + "Owner: " + ownerName + 
-        "\n" + "username: " + username + "\n"
-        + "Cleanliness level: " + cleanlinessLevel + "\n" 
-        + "Does pool need chemical check? " + chem;
+            "\n" + "username: " + username 
+            + "\n"
+            + "Cleanliness level: " + cleanlinessLevel + "\n" 
+            + "Does pool need chemical check? " + chem;
     }
 
     public boolean equals(Pool other) {
         if (
             this.ownerName.equals(other.ownerName) 
             && this.name.equals(other.name)
-            && this.cleanlinessLevel == other.cleanlinessLevel
-            && this.needsChecmicalCheck == other.needsChecmicalCheck
-            && this.username.equals(other.username)
+                && this.cleanlinessLevel == other.cleanlinessLevel
+                && this.needsChecmicalCheck == other.needsChecmicalCheck
+                && this.username.equals(other.username)
         ) {
             return true;
         } else {
