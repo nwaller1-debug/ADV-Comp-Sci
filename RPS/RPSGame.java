@@ -5,26 +5,29 @@ public class RPSGame {
 
 
     public RPSGame(Player player, NPC opponent) {
-
+        this.player = player;
+        this.opponent = opponent;
     }
 
     
     public void start() {
-        Scanner scan2 = new Scanner(System.in);
-        String tempName = scan2.nextLine();
-        scan2.close();
+        System.out.println("Enter name");
+        Scanner scan = new Scanner(System.in);
+        String tempName = scan.nextLine();
         String tempchoice = "";
         int i = 0;
+        boolean onward = false;
         while (
-            validateChoice(tempchoice) == false & i > 3
+            onward == false
         ) {
-            Scanner scan = new Scanner(System.in);
+            System.out.println("enter rock, paper, or sissors");
             tempchoice = scan.nextLine();
-            scan.close();
             i++;
+            onward = validateChoice(tempchoice);
         }
         
         setPlayerValues(tempName, tempchoice);
+        scan.close();
     }
 
     public void setPlayerValues(String name, String choice) {
@@ -32,7 +35,7 @@ public class RPSGame {
         player.setName(name);
     }
 
-    public boolean didPlayerWIn() {
+    public boolean didPlayerWin() {
         if (
             player.getChoice() == "rock" & opponent.getChoice() == "scissors"
         ) {
@@ -73,13 +76,13 @@ public class RPSGame {
         ) {
             return "paper";
         } else {
-            return "rock";
+            return "scissors";
         }
     }
 
     public String toString() {
         if(
-            didPlayerWIn()
+            didPlayerWin()
         ) {
             return player.getName() + " won!\n" + "Congratulations!";
         } else {
@@ -88,8 +91,8 @@ public class RPSGame {
     }
 
     public String displayResults() {
-        return "== Game Results ==\n" + player.getName() + "chose" + player.getChoice() + ".\n"
-        + "Opponent chose" + opponent.getChoice() + ".\n" + toString();
+        return "== Game Results ==\n" + player.getName() + " chose " + player.getChoice() + ".\n"
+        + "Opponent chose " + opponent.getChoice() + ".\n" + toString();
     }
     
 }
