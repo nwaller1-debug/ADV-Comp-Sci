@@ -101,7 +101,7 @@ public class UniversalTester {
             System.out.println(e);
         }
         try {
-            Hub h1 = new Hub();
+            Hub h1 = new Hub1();
             h1.doesStudentExist(" a");
         } catch (Exception e) {
             System.out.println(e);

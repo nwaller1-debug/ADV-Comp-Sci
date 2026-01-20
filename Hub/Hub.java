@@ -7,6 +7,7 @@ public class Hub {
         this.students = new Student[10];
         this.studentCount = 0;
     }
+    
 
     public Student registerStudent(String name, String password, String email) {
         requireNotBlank(name, "name");
