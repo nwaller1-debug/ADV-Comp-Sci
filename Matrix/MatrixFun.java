@@ -27,8 +27,8 @@ public class MatrixFun {
 
     }
 
-    public boolean equals(MatrixFun matrixOther) {
-        if (this.matrix.toString().equals(matrixOther.toString())) {
+    public boolean equals(MatrixFun other) {
+        if (matrix.toString().equals(other.matrix.toString())) {
             return true;
         } else {
             return false;
