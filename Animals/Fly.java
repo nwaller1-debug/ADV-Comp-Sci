@@ -1,14 +1,16 @@
-public class Fly {
+public class Fly extends Animal {
     private String color = "black";
     private int numberOfEyes = 1000;
     private int numberOfwings = 4;
     private int age = 2;
     private boolean canFly = true;
     private int numberOfLegs = 4;
-    private int energy = 5;
-    private boolean isHungry = true;
 
     public Fly() {
+
+    }
+
+    public void makeNoise() {
 
     }
 
@@ -27,15 +29,6 @@ public class Fly {
 
     public void paintFly(String color) {
         this.color = color;
-    }
-
-    public void getOlder() {
-        age++;
-    }
-
-    public void eat() {
-        isHungry = false;
-        energy++;
     }
 
     public void crash() {

@@ -25,7 +25,19 @@ public class ArrayVersusArrayList {
     // shifting all
     // other elements to the right.
     public static void lastComesFirst(String[] arr) {
-        // to-do: implement method
+        if (arr == null) {
+            throw new IllegalArgumentException("array can not be null");
+        }
+        if (arr.length == 0) {
+            arr = arr;
+        } else {
+            String[] clone = arr.clone();
+            arr[0] = arr[arr.length - 1];
+            for (int i = 1; i < arr.length; i++) {
+                arr[i] = clone[i - 1];
+            }
+
+        }
 
     }
 
@@ -33,7 +45,16 @@ public class ArrayVersusArrayList {
     // shifting all
     // other elements to the right.
     public static void lastComesFirst(ArrayList<String> arrList) {
-        // to-do: implement method
+        if (arrList == null) {
+            throw new IllegalArgumentException("array can not be empty");
+        }
+        if (arrList.size() == 0) {
+            arrList = arrList;
+        } else {
+            arrList.add(0, arrList.get(arrList.size() - 1));
+            arrList.remove(arrList.size() - 1);
+
+        }
 
     }
 
@@ -41,7 +62,14 @@ public class ArrayVersusArrayList {
     // shifting all
     // other elements to the left.
     public static void firstComesLast(String[] arr) {
-        // to-do: implement method
+        if (arr == null) {
+            throw new IllegalArgumentException("array can not be empty");
+        }
+        String[] x = arr.clone();
+        for (int i = 0; i < arr.length - 1; i++) {
+            arr[i] = x[i + 1];
+        }
+        arr[arr.length - 1] = x[0];
 
     }
 
@@ -49,7 +77,12 @@ public class ArrayVersusArrayList {
     // shifting all
     // other elements to the left.
     public static void firstComesLast(ArrayList<String> arrList) {
-        // to-do: implement method
+        if (arrList == null) {
+            throw new IllegalArgumentException("array can not be null");
+        }
+        String x = arrList.get(0);
+        arrList.remove(0);
+        arrList.add(x);
 
     }
 

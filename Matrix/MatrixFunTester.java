@@ -15,5 +15,18 @@ public class MatrixFunTester {
         System.out.println(mat.equals(mat2));
         System.out.println(mat.equals(neo));
     }
+    // public String toString() {
+    // String x = "";
+    // x += "=".repeat(matrix.length);
+    // String y = "";
+    // for (int r = 0; r < matrix.length; r++) {
+    // y += "\n";
+    // for (int c = 0; c < matrix.length; c++) {
+    // y += matrix[r][c];
+    // }
+    // }
+    // return x + y + "\n" + x;
+
+    // }
 
 }

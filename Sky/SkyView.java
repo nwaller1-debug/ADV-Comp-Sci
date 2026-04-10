@@ -1,64 +1,78 @@
 public class SkyView {
-    private double [][] view;
+    private double[][] view;
 
+    public SkyView(int numberOfRows, int numberOfCols, double[] scanned) {
+        if (numberOfRows * numberOfCols < scanned.length) {
+            throw new IllegalArgumentException("Scanned array does not fit view.");
+        }
 
+        view = new double[numberOfRows][numberOfCols];
+        int index = 0;
 
-    public SkyView(int numberOfRows, int numberOfCols, double [] scanned) {
-        double [][] matrix = new double[numberOfRows][numberOfCols];
-        int z = 0;
-        int x = 0;
-        for (int i = 0; i < numberOfRows; i++) {
-            if ((x % 2) == 0) {
-                for (int y = 0; y < numberOfRows; y++) {
-                    matrix[i][y] = scanned[z];
-                    z++;
+        for (int r = 0; r < numberOfRows; r++) {
+            if (r % 2 == 0) {
+                for (int c = 0; c < numberOfCols; c++) {
+                    view[r][c] = scanned[index++];
                 }
             } else {
-                for (int y = numberOfRows - 1; y > 0; y--) {
-                    matrix[i][y] = scanned[z];
-                    z++;
-                    }
-            
+                for (int c = numberOfCols - 1; c >= 0; c--) {
+                    view[r][c] = scanned[index++];
                 }
-        }
-        view = matrix;
-    }
-    
-    public String toString() {
-        String z = "";
-        for (int i = 0; i < view.length; i++) {
-            for (int y = 0; y < view[0].length; y++) {
-                z += view[i][y];
             }
-            z += "\n";
         }
-        return z;
+    }
+
+    public String toString() {
+        String result = "";
+        for (int r = 0; r < view.length; r++) {
+            for (int c = 0; c < view[0].length; c++) {
+                result += view[r][c] + " ";
+            }
+            result += "\n";
+        }
+        return result;
     }
 
     public boolean equals(SkyView other) {
-        if (this.view.length != other.view.length || 
-            this.view[0].length != other.view[0].length) {
+        if (other == null
+                || view.length != other.view.length
+                || view[0].length != other.view[0].length) {
             return false;
         }
-        for (int i = 0; i < view.length; i++) {
-            for (int y = 0; y < view[0].length; y++) {
-                 if (this.view[i][y] != other.view[i][y]) {
+        for (int r = 0; r < view.length; r++) {
+            for (int c = 0; c < view[0].length; c++) {
+                if (view[r][c] != other.view[r][c]) {
                     return false;
-                 }
+                }
             }
         }
         return true;
     }
-    
+
     public double getAverage(int startRow, int endRow, int startCol, int endCol) {
-        double z = 0;
-        double total = 0;
-        for (int i = startRow; i < endRow; i++) {
-            for (int y = startCol; y < endCol; y++) {
-                z ++;
-                total += view[i][y];
+        if (startRow < 0 || endRow >= view.length
+                || startCol < 0 || endCol >= view[0].length
+                || startRow > endRow || startCol > endCol) {
+            throw new IllegalArgumentException("Invalid index range.");
+        }
+
+        double sum = 0;
+        int count = 0;
+
+        for (int r = startRow; r <= endRow; r++) {
+            for (int c = startCol; c <= endCol; c++) {
+                sum += view[r][c];
+                count++;
             }
         }
-        return total/z;
+        return sum / count;
+    }
+
+    public double[][] getView() {
+        return view;
+    }
+
+    public void setView(double[][] view) {
+        this.view = view;
     }
 }
