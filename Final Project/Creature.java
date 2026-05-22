@@ -22,12 +22,28 @@ public abstract class Creature {
         return health;
     }
 
+    public boolean canFly() {
+        return canFly;
+    }
+
+    public boolean canCave() {
+        return canCave;
+    }
+
     public void setDamadge(int damadge) {
         this.damadge = damadge;
     }
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public void setCanCave(boolean canCave) {
+        this.canCave = canCave;
+    }
+
+    public void setCanFly(boolean canFly) {
+        this.canFly = canFly;
     }
 
 }
